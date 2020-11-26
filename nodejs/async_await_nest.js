@@ -20,7 +20,7 @@ function third () {
 }
 
 async function main () {
-  first();
+  await first();
   await third();
 }
 
