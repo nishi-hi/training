@@ -13,6 +13,7 @@
 body {
   margin: 1rem;
   background-color: var(--white);
+  font-size: 18px;
 }
 
 h1 {
