@@ -1,0 +1,56 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  color: green;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas: "h1 label"
+                       "menu menu"
+                       "main main"
+                       "footer footer";
+  height: 100vh;
+}
+
+.one {
+  grid-area: h1;
+  background-color: #8ca0ff;
+}
+
+.two {
+  grid-area: label;
+  background-color: #ffa08c;
+}
+
+.three {
+  grid-area: menu;
+  display: none;
+}
+
+.two:hover + .three {
+  display: block;
+  background-color: #bfffff;
+}
+
+.four {
+  grid-area: main;
+  background-color: #ffff64;
+}
+
+.five {
+  grid-area: footer;
+  background-color: #8cffa0;
+}
