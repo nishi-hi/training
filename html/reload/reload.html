@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root { --white: #ffffff; --black: #333333; --cyan: #009bbf; }
+
+.width-32px { width: 32px; }
+.height-32px { height: 32px; }
+.border-radius-5px { border-radius: 5px; }
+.bg-white { background-color: var(--white); }
+.bg-cyan { background-color: var(--cyan); }
+.white { color: var(--white); }
+.black { color: var(--black); }
+.cursor-pointer { cursor: pointer; }
+.margin-t1rem-r0-b1rem-l0 { margin: 1rem 0 1rem 0; }
+
+.element-hcenter-vcenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reload-label {
+  position: relative;
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  border: 3px solid;
+  border-radius: 50%;
+}
+
+.reload-label:before {
+  position: absolute;
+  box-sizing: border-box;
+  top: 1px;
+  right: -6px;
+  width: 6px;
+  height: 6px;
+  content: "";
+  background-color: var(--cyan);
+  transform: rotate(10deg);
+}
+
+.reload-label:after {
+  position: absolute;
+  box-sizing: border-box;
+  top: 5px;
+  right: -6px;
+  content: "";
+  border: 6px solid transparent;
+  border-top: 6px solid;
+  background-color: transparent;
+  transform-origin: left top;
+  transform: rotate(-45deg);
+}
+</style>
+<title>Reload Example</title>
+</head>
+<body>
+  <p>Click this button and reload this page.</p>
+  <div class="element-hcenter-vcenter width-32px height-32px border-radius-5px bg-cyan cursor-pointer">
+     <div class="reload-label white" onclick="location.reload();"></div>
+  </div>
+</body>
+</html>
