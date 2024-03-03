@@ -115,12 +115,14 @@ services:
 ```
 
 アプリケーションのディレクトリにある`Dockerfile`の環境変数を`BUNDLE_PATH`のみに変更する。
+
 ```Dockerfile
 ENV BUNDLE_PATH="/usr/local/bundle"
 ```
 
 ## Visual Studio Codeの推奨拡張機能
 アプリケーションのディレクトリに、`.vscode`ディレクトリを作成して、以下のファイルを作成する。
+
 `extensions.json`
 ```json
 {
@@ -131,8 +133,8 @@ ENV BUNDLE_PATH="/usr/local/bundle"
 ```
 
 ## Dev Containers
-アプリケーションのディレクトリに、`.devcontainer`ディレクトリを作成して、以下のファイルを作成する。
-`devcontainer.json`のテンプレートは、Visual Studio Codeのコマンドパレットから取得できる。
+アプリケーションのディレクトリに、`.devcontainer`ディレクトリを作成して、以下のファイルを作成する。  
+`devcontainer.json`のテンプレートは、Visual Studio Codeのコマンドパレットから取得できる。  
 `devcontainer.json`
 ```json
 {
@@ -163,7 +165,7 @@ ENV BUNDLE_PATH="/usr/local/bundle"
 }
 ```
 
-`docker-compose.yml`を設置しないと、Dev Containersで開いた時にPumaが起動してしまう。
+`docker-compose.yml`を設置しないと、Dev Containersで開いた時にPumaが起動してしまう。  
 `docker-compose.yml`
 ```yml
 version: "3"
