@@ -141,7 +141,7 @@ ENV BUNDLE_PATH="/usr/local/bundle"
 	"name": "Existing Docker Compose (Extend)",
 	"dockerComposeFile": [
 		"../docker-compose.yml",
-    "../docker-compose.development.yml",
+                "../docker-compose.development.yml",
 		"docker-compose.yml"
 	],
 	"service": "web",
@@ -149,7 +149,7 @@ ENV BUNDLE_PATH="/usr/local/bundle"
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"shopify.Ruby",
+				"shopify.ruby",
 				"castwide.solargraph",
 				"misogi.ruby-rubocop",
 				"koichisasada.vscode-rdbg"
@@ -172,6 +172,14 @@ version: "3"
 services:
   web:
     command: /bin/bash -c "while sleep 1000; do :; done"
+```
+
+アプリケーションのディレクトリにある`Gemfile`の`development`グループに、以下のGemを追加する。
+```gemfile
+  gem 'solargraph'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-performance', require: false
 ```
 
 ## MySQLのデータディレクトリ
