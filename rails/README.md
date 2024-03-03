@@ -190,7 +190,7 @@ mkdir mysql_data
 
 ## Dockerコンテナに送信しないファイル
 アプリケーションのディレクトリにある`.dockerignore`に、以下の内容を追加する。
-```gitignore
+```ignore
 # Ignore assets. (after rails new).
 /.dockerignore
 /Dockerfile
@@ -202,7 +202,7 @@ mkdir mysql_data
 
 ## Gitにチェックインしないファイル
 アプリケーションのディレクトリにある`.gitignore`に、以下の内容を追加する。
-```gitignore
+```ignore
 # Ignore assets. (after rails new).
 /mysql_data/
 ```
