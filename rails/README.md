@@ -111,6 +111,7 @@ services:
       BUNDLE_DEPLOYMENT: 1
       BUNDLE_WITHOUT: "development"
       SECRET_KEY_BASE: "<bundle exec rake secretで生成した文字列>"
+      DATABASE_URL: "mysql2://<DBユーザー名>:<DBパスワード>@db/<DB名>"
 ```
 
 アプリケーションのディレクトリにある`Dockerfile`の環境変数を`BUNDLE_PATH`のみに変更する。
