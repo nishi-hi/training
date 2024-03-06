@@ -114,10 +114,50 @@ services:
       DATABASE_URL: "mysql2://<DBユーザー名>:<DBパスワード>@db/<DB名>"
 ```
 
-アプリケーションのディレクトリにある`Dockerfile`の環境変数を`BUNDLE_PATH`のみに変更する。
+アプリケーションのディレクトリにある`Dockerfile`のファイル名を変更する。
+```sh
+cp -p Dockerfile Dockerfile-production
+```
+
+もとの`Dockerfile`をベースにして開発環境用の`Dockerfile`を作成する。
 
 ```Dockerfile
+FROM ruby:3.3.0-slim as base
+
+EXPOSE 3000
+
 ENV BUNDLE_PATH="/usr/local/bundle"
+
+WORKDIR /rails
+
+FROM base as build
+
+# Install packages needed to build gems
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y build-essential default-libmysqlclient-dev git libvips pkg-config
+
+# Install application gems
+COPY Gemfile Gemfile.lock ./
+RUN gem install bundler && \
+    bundle install && \
+    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
+
+# Final stage for app image
+FROM base
+
+# Install packages needed for deployment
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y curl default-mysql-client libvips && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+# Copy built artifacts: gems
+COPY --from=build /usr/local/bundle /usr/local/bundle
+
+# Run and own only the runtime files as a non-root user for security
+RUN useradd rails --create-home --shell /bin/bash && \
+    chown -R rails:rails /rails
+
+USER rails:rails
 ```
 
 ## Visual Studio Codeの推奨拡張機能
