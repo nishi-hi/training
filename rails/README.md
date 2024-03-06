@@ -248,7 +248,16 @@ mkdir mysql_data
 ```
 
 ## Dockerコンテナ起動
-Dev Containersで開いた後、ターミナルでPumaを起動する。
+Dev Containersで開いた後、初回のみENTRYPOINTのシェルスクリプトでPumaを起動する。
 ```sh
-rails s
+cd /rails
+
+./bin/docker-entrypoint ./bin/rails server
+```
+
+2回目以降は、`rails`コマンドでPumaを起動する。
+```sh
+cd /rails
+
+./bin/rails s
 ```
